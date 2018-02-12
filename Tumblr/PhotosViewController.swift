@@ -12,7 +12,7 @@ import AlamofireImage
 class PhotosViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     var posts: [[String: Any]] = [] //array to store posts
-       // var refreshControl: UIRefreshControl!
+    var refreshControl: UIRefreshControl!
     
     @IBOutlet weak var tableView: UITableView!
    
@@ -22,11 +22,11 @@ class PhotosViewController: UIViewController, UITableViewDataSource, UITableView
         
         fetchPosts()
         
-       /* REFRESH CONTROL
-         refreshControl = UIRefreshControl()
-         refreshControl.addTarget(self, action: #selector (PhotosViewController.didPullToRefresh(_:)), for:.valueChanged)
-         tableView.insertSubview(refreshControl, at: 0)
-        */
+       //REFRESH CONTROL
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector (PhotosViewController.didPullToRefresh(_:)), for:.valueChanged)
+        tableView.insertSubview(refreshControl, at: 0)
+        
         
         //configure the datasource and delegate of the table view.
         tableView.delegate = self
@@ -36,18 +36,18 @@ class PhotosViewController: UIViewController, UITableViewDataSource, UITableView
         
         
     }
-  /*  //tells if refresh is being pulled or not
+    //function to tell if refresh is being pulled or not
     @objc func didPullToRefresh(_ refreshControl: UIRefreshControl)
     {
         fetchPosts()
     }
-      */
     
-    //number of cells
+    
+    //number of cells in table
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return posts.count
     }
-
+    //info in each cell in table
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
          let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoCell", for: indexPath) as! PhotoCell
         
@@ -60,24 +60,10 @@ class PhotosViewController: UIViewController, UITableViewDataSource, UITableView
         let url = URL(string: urlString)
         cell.photoImageView.af_setImage(withURL: url!)
         
-        /*if let photos = post["photos"] as? [[String: Any]] {
-        
-            
-            let photo = photos[0]
-            let originalSize = photo["original_size"] as! [String: Any]
-            let urlString = originalSize["url"] as! String
-            let url = URL(string: urlString)
-            print(url)
- 
-            //   cell.photoImageView.af_setImage(withURL: url!)
-        }
-            */
         return cell
     }
     
     func fetchPosts(){
-        
-        
         
         let url = URL(string: "https://api.tumblr.com/v2/blog/humansofnewyork.tumblr.com/posts/photo?api_key=Q6vHoaVm5L1u2ZAW1fqv3Jw48gFzYVg9P0vH0VHl3GVy6quoGV")!
         let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
@@ -95,21 +81,14 @@ class PhotosViewController: UIViewController, UITableViewDataSource, UITableView
                 // Store the returned array of dictionaries in our posts property
                 self.posts = responseDictionary["posts"] as! [[String: Any]]
                 
-                // TODO: Reload the table view
+                // Reload the table view
                 self.tableView.reloadData()
+                self.refreshControl.endRefreshing()
             }
         }
         task.resume()
         
     }
-        
-    
-/*
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
- */
 
 }
 
