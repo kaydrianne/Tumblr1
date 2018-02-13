@@ -16,6 +16,11 @@ class PhotosViewController: UIViewController, UITableViewDataSource, UITableView
     
     @IBOutlet weak var tableView: UITableView!
    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        var PhotoDetailsViewController = segue.destination as! PhotosViewController
+        
+       // PhotoDetailsViewController.image = self.imageView.image
+    }
     
     @objc override func viewDidLoad() {
         super.viewDidLoad()
