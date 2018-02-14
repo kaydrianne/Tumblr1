@@ -15,12 +15,6 @@ class PhotosViewController: UIViewController, UITableViewDataSource, UITableView
     var refreshControl: UIRefreshControl!
     
     @IBOutlet weak var tableView: UITableView!
-   
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        var PhotoDetailsViewController = segue.destination as! PhotosViewController
-        
-       // PhotoDetailsViewController.image = self.imageView.image
-    }
     
     @objc override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,6 +60,34 @@ class PhotosViewController: UIViewController, UITableViewDataSource, UITableView
         cell.photoImageView.af_setImage(withURL: url!)
         
         return cell
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let photoDetailsViewController = segue.destination as! PhotoDetailsViewController
+   //     PhotoDetailsViewController.image = self.imageView.image
+        
+        
+   //     let vc = segue.destination as! PhotoDetailsViewController
+        let cell = sender as! UITableViewCell
+        let indexPath = tableView.indexPath(for: cell)!
+        
+        print(indexPath.row)
+        
+        let post = posts[indexPath.row]
+        let photoURL = post["photos"] as? [[String:Any]]
+        let singlePhoto = photoURL![0]
+        let original = singlePhoto["original_size"] as! [String:Any]
+        
+        let urlString = original["url"] as! String
+        photoDetailsViewController.urlString = urlString
+        
+      //  print(urlString)
+        let url = URL(string: urlString)
+       // cell.photoImageView.af_setImage(withURL: url!)
+        //tableView:didSelectRowAtIndexPath
+       // tableView.deselectRow(at: indexPath, animated: true)
+        
+        
+        
     }
     
     func fetchPosts(){

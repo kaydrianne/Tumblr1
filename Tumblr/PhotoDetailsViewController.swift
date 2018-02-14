@@ -9,14 +9,19 @@
 import UIKit
 
 class PhotoDetailsViewController: UIViewController {
-
+    
+    var image: UIImage!
+    var urlString: String!
     @IBOutlet weak var photoImageView: UIImageView!
   
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        photoImageView.image = image
-        
+        print("URL PASSED: \(urlString)")
+        let url = URL(string: urlString)
+         photoImageView.image = image
+         photoImageView.af_setImage(withURL: url!)
+      
     }
 
     override func didReceiveMemoryWarning() {

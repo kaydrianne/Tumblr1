@@ -26,26 +26,27 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PhotoCell" rowHeight="194" id="uLN-cb-FbD" customClass="PhotoCell" customModule="Tumblr" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="194"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PhotoCell" rowHeight="239" id="moC-CP-SlX" customClass="PhotoCell" customModule="Tumblr" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="239"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uLN-cb-FbD" id="Hrd-uN-qHm">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="193.66666666666666"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="moC-CP-SlX" id="g5V-Aa-oA2">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="238.66666666666666"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Gjs-Qe-oPS">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="194"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YlK-w1-aed">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="239"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Gjs-Qe-oPS" firstAttribute="top" secondItem="Hrd-uN-qHm" secondAttribute="top" id="Fcd-uS-RQX"/>
-                                                <constraint firstAttribute="bottom" secondItem="Gjs-Qe-oPS" secondAttribute="bottom" id="Gy2-fS-n2g"/>
-                                                <constraint firstItem="Gjs-Qe-oPS" firstAttribute="leading" secondItem="Hrd-uN-qHm" secondAttribute="leading" id="rV3-RA-4og"/>
-                                                <constraint firstAttribute="trailing" secondItem="Gjs-Qe-oPS" secondAttribute="trailing" id="yLb-vE-C0r"/>
+                                                <constraint firstAttribute="trailing" secondItem="YlK-w1-aed" secondAttribute="trailing" id="BbN-Q2-ubz"/>
+                                                <constraint firstItem="YlK-w1-aed" firstAttribute="top" secondItem="g5V-Aa-oA2" secondAttribute="top" id="DJy-r7-n0p"/>
+                                                <constraint firstAttribute="bottom" secondItem="YlK-w1-aed" secondAttribute="bottom" id="aUm-6T-STy"/>
+                                                <constraint firstItem="YlK-w1-aed" firstAttribute="leading" secondItem="g5V-Aa-oA2" secondAttribute="leading" id="dWo-3z-Hl8"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="photoImageView" destination="Gjs-Qe-oPS" id="TfI-hg-5Ts"/>
+                                            <outlet property="photoImageView" destination="YlK-w1-aed" id="Rdu-aV-RZ1"/>
+                                            <segue destination="bY1-YN-JrX" kind="show" id="4q4-ON-N1P"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -54,7 +55,11 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="cdr-bs-m8i" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="41c-3u-BBr"/>
+                            <constraint firstItem="cdr-bs-m8i" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="8kv-pV-GfK"/>
+                            <constraint firstItem="cdr-bs-m8i" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="EvJ-tQ-scD"/>
+                            <constraint firstItem="cdr-bs-m8i" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="RX3-8q-e1M"/>
                             <constraint firstItem="cdr-bs-m8i" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="StO-KI-gwg"/>
+                            <constraint firstItem="cdr-bs-m8i" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="cIb-4q-4BT"/>
                             <constraint firstItem="cdr-bs-m8i" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="hlo-lZ-ZpT"/>
                             <constraint firstItem="cdr-bs-m8i" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="jgs-Wj-1oN"/>
                         </constraints>
@@ -77,14 +82,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sag-lo-IXM">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="284"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Sag-lo-IXM">
+                                <rect key="frame" x="0.0" y="218" width="414" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="nxQ-bT-u2j"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Sag-lo-IXM" firstAttribute="leading" secondItem="YYt-l5-Op0" secondAttribute="leading" id="4d0-ul-D28"/>
+                            <constraint firstItem="Sag-lo-IXM" firstAttribute="centerY" secondItem="nnK-r8-tyE" secondAttribute="centerY" id="GjP-ir-IhJ"/>
+                            <constraint firstItem="Sag-lo-IXM" firstAttribute="trailing" secondItem="YYt-l5-Op0" secondAttribute="trailing" id="n8H-g2-06w"/>
+                            <constraint firstItem="Sag-lo-IXM" firstAttribute="centerX" secondItem="nnK-r8-tyE" secondAttribute="centerX" id="q51-Cx-c3m"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="YYt-l5-Op0"/>
                     </view>
+                    <navigationItem key="navigationItem" id="XfJ-3S-BWq"/>
                     <connections>
                         <outlet property="photoImageView" destination="Sag-lo-IXM" id="6cM-Ky-asz"/>
                     </connections>
