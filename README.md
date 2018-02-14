@@ -89,7 +89,7 @@ Here's a walkthrough of implemented user stories:
 
 <img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-GIF created with [Giphy](https://media.giphy.com/media/26wkB1uKOKIdrxseA/giphy.gif).
+GIF created with [Giphy](https://media.giphy.com/media/931LT4muRm1IhhPw53/giphy.gif).
 
 ## Notes
 
